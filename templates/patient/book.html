@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-6">
+  <h4>Book with Dr. {{ doctor.name }} ({{ doctor.specialization }})</h4>
+  <form method="post">
+    <div class="mb-3">
+      <label>Date</label>
+      <input name="date" type="date" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Time</label>
+      <input name="time" type="time" class="form-control" required>
+    </div>
+    <button class="btn btn-success">Book</button>
+  </form>
+</div>
+{% endblock %}

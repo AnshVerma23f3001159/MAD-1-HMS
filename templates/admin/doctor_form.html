@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>{{ action }} Doctor</h4>
+
+<form method="post">
+  <div class="mb-3">
+    <label>Username</label>
+    <input 
+      name="username" 
+      class="form-control" 
+      {% if action == 'Edit' %} value="{{ doctor.user.username }}" disabled {% endif %} 
+      required
+    >
+  </div>
+
+  <div class="mb-3">
+    <label>Name</label>
+    <input 
+      name="name" 
+      class="form-control" 
+      value="{{ doctor.name if doctor else '' }}" 
+      required
+    >
+  </div>
+
+  <div class="mb-3">
+    <label>Specialization</label>
+    <input 
+      name="specialization" 
+      class="form-control" 
+      value="{{ doctor.specialization if doctor else '' }}"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label>Availability</label>
+    <input 
+      name="availability" 
+      class="form-control" 
+      value="{{ doctor.availability if doctor else '' }}"
+    >
+  </div>
+
+  <button class="btn btn-primary">{{ action }}</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Doctor Dashboard – Dr. {{ doctor.name }}</h3>
+
+<h5>Upcoming Appointments</h5>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for a in appointments %}
+    <tr>
+      <td>{{ a.patient.name }}</td>
+      <td>{{ a.date }}</td>
+      <td>{{ a.time }}</td>
+      <td>{{ a.status }}</td>
+
+      <td>
+        {% if a.status != 'Completed' %}
+        <form method="post" action="{{ url_for('doctor_mark_complete', app_id=a.id) }}">
+          <input name="diagnosis" placeholder="Diagnosis" class="form-control mb-1">
+          <input name="prescription" placeholder="Prescription" class="form-control mb-1">
+          <input name="notes" placeholder="Notes" class="form-control mb-1">
+          <button class="btn btn-success btn-sm mt-1">Mark Completed</button>
+        </form>
+        {% else %}
+        <span class="text-success">Done</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

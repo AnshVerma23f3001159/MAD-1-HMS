@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron text-center p-5 bg-light rounded">
+  <h1>Welcome to the Hospital Management System</h1>
+  <p class="lead">A simple Flask + SQLite demo for the MAD project</p>
+
+  <p>
+    <a class="btn btn-primary" href="{{ url_for('register') }}">Register as Patient</a>
+    <a class="btn btn-secondary" href="{{ url_for('login') }}">Login</a>
+  </p>
+
+  <p class="small text-muted">
+    Default admin: <strong>admin</strong> / <strong>admin123</strong>
+  </p>
+</div>
+
+{% endblock %}
